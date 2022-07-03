@@ -1,9 +1,12 @@
 package db
 
-import "github.com/awesome-sphere/as-authentication/models"
+import (
+	"github.com/awesome-sphere/as-authentication/models"
+	"gorm.io/gorm"
+)
 
-func GetUser(username string) models.User {
+func GetUser(username string) (*gorm.DB, models.User) {
 	var user models.User
-	DB.Where("username = ?", username).First(&user)
-	return user
+	tx := DB.First(&user, "username = ?", username)
+	return tx, user
 }
