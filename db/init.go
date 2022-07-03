@@ -8,7 +8,9 @@ import (
 	"gorm.io/gorm"
 )
 
-func Init() *gorm.DB {
+var DB *gorm.DB
+
+func Init() {
 	dbURL := "postgres://pkinwza:securepassword@localhost:5432/as-user"
 
 	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{})
@@ -19,5 +21,5 @@ func Init() *gorm.DB {
 
 	db.AutoMigrate(&models.Booking{}, &models.User{})
 
-	return db
+	DB = db
 }
