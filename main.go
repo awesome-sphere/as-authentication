@@ -14,8 +14,8 @@ func main() {
 	// initialze database
 	db.Init()
 
-	router.POST("/auth/login", service.Login)
-	router.POST("/auth/signup", service.Signup)
+	router.POST("/authen/login", service.Login)
+	router.POST("/authen/signup", service.Signup)
 
 	router.Run(":9001")
 }
