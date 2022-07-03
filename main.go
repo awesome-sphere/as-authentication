@@ -6,10 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func login() {
-
-}
-
 func main() {
 	// NOTE: Change to ReleaseMode when releasing the app
 	gin.SetMode(gin.DebugMode)
@@ -18,6 +14,8 @@ func main() {
 	// initialze database
 	db.Init()
 
-	router.POST("/login", service.Login)
-	router.POST("/login", service.Signup)
+	router.POST("/auth/login", service.Login)
+	router.POST("/auth/signup", service.Signup)
+
+	router.Run(":9001")
 }
