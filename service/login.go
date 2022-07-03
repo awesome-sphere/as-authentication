@@ -34,6 +34,8 @@ func Login(c *gin.Context) {
 		log.Fatal(err)
 	}
 
+	// TODO: JWT Token stuffs
+
 	log.Printf("Match: %v", match)
 	c.JSON(http.StatusFound, gin.H{
 		"message": "Login successful.", // cast it to string before showing
