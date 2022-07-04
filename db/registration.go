@@ -13,12 +13,6 @@ func IsValidEmail(email string) bool {
 	return errors.Is(isUsed.Error, gorm.ErrRecordNotFound)
 }
 
-// func IsValidUsername(username string) bool {
-// 	var user models.User
-// 	isUsed := DB.Where("username = ?", username).First(&user)
-// 	return errors.Is(isUsed.Error, gorm.ErrRecordNotFound)
-// }
-
 func CreateNewUser(username, hash, email string) {
 	user := &models.User{
 		Username:       username,
