@@ -7,8 +7,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-const BEARER_TOKEN = "Bearer "
-
 func checkTokenValidity(token *jwt.Token) (interface{}, error) {
 	if _, isvalid := token.Method.(*jwt.SigningMethodHMAC); !isvalid {
 		return nil, fmt.Errorf("Invalid token.")

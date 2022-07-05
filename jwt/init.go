@@ -4,6 +4,8 @@ import (
 	"github.com/awesome-sphere/as-authentication/utils"
 )
 
+const BEARER_TOKEN = "Bearer "
+
 var SECRET_KEY string
 var ISSUER string
 
