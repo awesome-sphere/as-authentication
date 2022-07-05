@@ -19,5 +19,7 @@ func main() {
 	router.POST("/authen/login", service.Login)
 	router.POST("/authen/signup", service.Signup)
 
+	router.POST("/authen/update-hist", service.Booking)
+
 	router.Run(":9001")
 }
