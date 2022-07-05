@@ -49,8 +49,10 @@ func Login(c *gin.Context) {
 	switch match {
 	case true:
 		c.JSON(http.StatusOK, gin.H{
-			"message": "Login successful!",
-			"token":   jwt.GenerateJWT(user),
+			"message":  "Login successful!",
+			"token":    jwt.GenerateJWT(user),
+			"username": user.Username,
+			"user_id":  user.ID,
 		})
 	default:
 		c.JSON(http.StatusBadRequest, gin.H{
