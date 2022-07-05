@@ -1,9 +1,11 @@
 package db
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/awesome-sphere/as-authentication/models"
+	"github.com/awesome-sphere/as-authentication/utils"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -11,7 +13,20 @@ import (
 var DB *gorm.DB
 
 func InitializeDatabase() {
-	dbURL := "postgres://pkinwza:securepassword@localhost:5432/as-user"
+	dbUser := utils.GetenvOr("POSTGRES_USER", "pkinwza")
+	dbPassword := utils.GetenvOr("POSTGRES_PASSWORD", "securepassword")
+	dbHost := utils.GetenvOr("POSTGRES_HOST", "localhost")
+	dbPort := utils.GetenvOr("POSTGRES_PORT", "5432")
+	dbName := utils.GetenvOr("POSTGRES_DB", "as-user")
+
+	dbURL := fmt.Sprintf(
+		"postgres://%s:%s@%s:%s/%s",
+		dbUser,
+		dbPassword,
+		dbHost,
+		dbPort,
+		dbName,
+	)
 
 	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{})
 

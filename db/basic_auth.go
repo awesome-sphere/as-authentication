@@ -7,17 +7,17 @@ import (
 	"gorm.io/gorm"
 )
 
+func GetUser(username string) (*gorm.DB, models.User) {
+	var user models.User
+	tx := DB.First(&user, "username = ?", username)
+	return tx, user
+}
+
 func IsValidEmail(email string) bool {
 	var user models.User
 	isUsed := DB.Where("email = ?", email).First(&user)
 	return errors.Is(isUsed.Error, gorm.ErrRecordNotFound)
 }
-
-// func IsValidUsername(username string) bool {
-// 	var user models.User
-// 	isUsed := DB.Where("username = ?", username).First(&user)
-// 	return errors.Is(isUsed.Error, gorm.ErrRecordNotFound)
-// }
 
 func CreateNewUser(username, hash, email string) {
 	user := &models.User{

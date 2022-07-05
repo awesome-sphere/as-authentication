@@ -9,12 +9,10 @@ import (
 
 func GenerateJWT(user models.User) string {
 	claims := &authenticationClaim{
-		user.Username,
-		user.Email,
 		user.ID,
 		user.IsAdmin,
 		jwt.StandardClaims{
-			ExpiresAt: time.Now().Add(time.Hour * 24).Unix(),
+			ExpiresAt: time.Now().Add(time.Hour * 24).Unix(), // FIXME: change expire time
 			Issuer:    ISSUER,
 			IssuedAt:  time.Now().Unix(),
 			Subject:   user.Username,
