@@ -10,7 +10,7 @@ import (
 
 var DB *gorm.DB
 
-func Init() {
+func InitializeDatabase() {
 	dbURL := "postgres://pkinwza:securepassword@localhost:5432/as-user"
 
 	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{})

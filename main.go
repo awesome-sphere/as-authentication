@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/awesome-sphere/as-authentication/db"
+	"github.com/awesome-sphere/as-authentication/jwt"
 	"github.com/awesome-sphere/as-authentication/service"
 	"github.com/gin-gonic/gin"
 )
@@ -12,7 +13,8 @@ func main() {
 	router := gin.Default()
 
 	// initialze database
-	db.Init()
+	db.InitializeDatabase()
+	jwt.InitializeJWTSettings()
 
 	router.POST("/authen/login", service.Login)
 	router.POST("/authen/signup", service.Signup)

@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	github.com/alexedwards/argon2id v0.0.0-20211130144151-3585854a6387
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.8.1
 	github.com/jackc/pgtype v1.11.0
 	gorm.io/driver/postgres v1.3.7
