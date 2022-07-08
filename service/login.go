@@ -53,6 +53,7 @@ func Login(c *gin.Context) {
 			"token":    jwt.GenerateJWT(user),
 			"username": user.Username,
 			"is_admin": user.IsAdmin,
+			"email":    user.Email,
 		})
 	default:
 		c.JSON(http.StatusBadRequest, gin.H{
