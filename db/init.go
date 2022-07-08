@@ -16,7 +16,7 @@ func InitializeDatabase() {
 	dbUser := utils.GetenvOr("POSTGRES_USER", "pkinwza")
 	dbPassword := utils.GetenvOr("POSTGRES_PASSWORD", "securepassword")
 	dbHost := utils.GetenvOr("POSTGRES_HOST", "localhost")
-	dbPort := utils.GetenvOr("POSTGRES_PORT", "5432")
+	dbPort := utils.GetenvOr("POSTGRES_PORT", "5433")
 	dbName := utils.GetenvOr("POSTGRES_DB", "as-user")
 
 	dbURL := fmt.Sprintf(
@@ -27,6 +27,7 @@ func InitializeDatabase() {
 		dbPort,
 		dbName,
 	)
+	log.Printf("Connecting to database: %s", dbURL)
 
 	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{})
 

@@ -52,7 +52,6 @@ func Login(c *gin.Context) {
 			"message":  "Login successful!",
 			"token":    jwt.GenerateJWT(user),
 			"username": user.Username,
-			"user_id":  user.ID,
 			"is_admin": user.IsAdmin,
 		})
 	default:
