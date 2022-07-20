@@ -6,8 +6,8 @@ import (
 
 	"github.com/alexedwards/argon2id"
 	"github.com/awesome-sphere/as-authentication/db"
+	"github.com/awesome-sphere/as-authentication/db/models"
 	"github.com/awesome-sphere/as-authentication/jwt"
-	"github.com/awesome-sphere/as-authentication/models"
 	"github.com/awesome-sphere/as-authentication/serializer"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

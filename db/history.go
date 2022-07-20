@@ -1,7 +1,7 @@
 package db
 
 import (
-	"github.com/awesome-sphere/as-authentication/models"
+	"github.com/awesome-sphere/as-authentication/db/models"
 	"gorm.io/datatypes"
 )
 

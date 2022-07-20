@@ -3,7 +3,7 @@ package jwt
 import (
 	"time"
 
-	"github.com/awesome-sphere/as-authentication/models"
+	"github.com/awesome-sphere/as-authentication/db/models"
 	"github.com/dgrijalva/jwt-go"
 )
 
