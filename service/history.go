@@ -24,16 +24,16 @@ func GetHistory(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "User ID is not a number."})
 	}
 
-	var booking models.Booking
+	var booking []models.Booking
 
-	if err := db.DB.FirstOrInit(&booking, "user_id", user_id).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"error": err.Error(),
+	if err := db.DB.Find(&booking, "user_id", user_id).Error; err != nil {
+		c.JSON(http.StatusOK, gin.H{
+			"history": []byte{},
 		})
 		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"history": booking.Booking,
+		"history": booking,
 	})
 }
