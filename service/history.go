@@ -6,6 +6,7 @@ import (
 	"github.com/awesome-sphere/as-authentication/db"
 	"github.com/awesome-sphere/as-authentication/db/models"
 	"github.com/awesome-sphere/as-authentication/jwt"
+	"github.com/awesome-sphere/as-authentication/serializer"
 	"github.com/gin-gonic/gin"
 )
 
@@ -24,9 +25,9 @@ func GetHistory(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "User ID is not a number."})
 	}
 
-	var booking []models.Booking
+	var booking []serializer.HistorySerializer
 
-	if err := db.DB.Find(&booking, "user_id", user_id).Error; err != nil {
+	if err := db.DB.Model(&models.Booking{}).Find(&booking, "user_id", user_id).Error; err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"history": []byte{},
 		})

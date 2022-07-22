@@ -1,5 +1,7 @@
 package serializer
 
+import "gorm.io/datatypes"
+
 type HistorySerializer struct {
-	UserID string `json:"user_id" binding:"required"`
+	Booking datatypes.JSON `json:"booking" binding:"required"`
 }
